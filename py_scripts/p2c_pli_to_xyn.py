@@ -34,7 +34,6 @@ global_dir = f'{model_dir}/global'
 
 # Open global grid file
 file_net = f'{case_dir}/BS/output/gtsm_fine_0*_map.nc'        # Ideally _net.nc files could be used for this
-print('FILE NET:', file_net)
 crs_net = 'EPSG:4326'
 data_xr = dfmt.open_partitioned_dataset(file_net)
 
@@ -53,33 +52,6 @@ file_pli_list = []
 # Add all files ending with '.pli' in the specified folder
 folder_path = Path(f'{model_dir}/local/')
 file_pli_list.extend(folder_path.glob('*.pli'))
-
-''' 
-for file_pli in file_pli_list:
-    polyfile_object = hcdfm.PolyFile(file_pli)
-    data_pol_pd_list = [dfmt.pointlike_to_DataFrame(polyobj) for polyobj in polyfile_object.objects]
-    data_pol_pd = pd.concat(data_pol_pd_list)
-    
-    #get and plot unique cell center coordinates
-    plicoords_distance1, plicoords_cellidx = tree_nest1.query(data_pol_pd,k=4) #TODO: do on spherical globe (like gtsm obs snapping procedure)
-    cellidx_uniq = np.unique(plicoords_cellidx)
-    cellcoords = face_coords_np[cellidx_uniq,:]
-    #ax.plot(cellcoords[:,0],cellcoords[:,1],'x',label=f'{file_pli.name}_cellcenters')
-    maxnumlen = max(4, len(str(len(cellcoords))))
-    pli_name = os.path.splitext(file_pli.name)[0]
-    cellcoords_names = [f'nestpoint_{pli_name}_{x+1:0{maxnumlen}d}' for x in range(len(cellcoords))]
-    
-    #write nesting obspoints to file
-    basename = file_pli.name.replace('.pli','')
-    #file_obs = os.path.join(global_dir,f'{case_name}_obs.xyn')
-    file_obs = os.path.join(global_dir,f'{basename}_obs.xyn')
-    # generate xyn file #TODO: make more convenient to initialize
-    xynpoints = [hcdfm.XYNPoint(x=x,y=y,n=n) for x,y,n in zip(cellcoords[:,0], cellcoords[:,1], cellcoords_names)]
-    xynmodel = hcdfm.XYNModel(points=xynpoints)
-    xynmodel.save(file_obs)
-    #print('xynmodel:', xynmodel)
-    #xynmodel.to_csv(file_obs,sep='\t',index=False,header=False, float_format='%11.6f') 
-'''    
 
 
 for file_pli in file_pli_list:
