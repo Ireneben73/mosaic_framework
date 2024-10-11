@@ -21,6 +21,7 @@ The code consists of the following files and directories:
  
    * **j1_run_GTSM.sh:** bash script to execute GTSM and run its pre- and postprocess
      * **p1a_download_ERA5.py:** script to download ERA5 data from CDS
+     * **p1b_ERA5_maps.py:** script with functions necessary for p1b_ERA5_process4GTSM.py
      * **p1b_ERA5_process4GTSM.py:** script to preprocess the ERA5 data for GTSM
      * **p2a_preprocess_GTSM.py:** script to prepare the model files of GTSM
      * **p2b_create_localGTSM_v2.py:** script to generate a local high-resolution grid using Delft3D FM and define its model boundaries
