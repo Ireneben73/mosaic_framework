@@ -44,7 +44,7 @@ os.chdir(local_dir)
 ## Files
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-if model_config=="RC":
+if model_config=="N3":
     shutil.copy2(f"{root_dir}/model_configs_setups/OR_refinement/observation_locations_snapped_1p25eu/selected_output_OR_" + str(case_name) + "_snapped_1p25eu_unique_obs.xyn",f'{local_dir}/selected_output_OR_' + str(case_name) + '_snapped_1p25eu_unique_obs.xyn')
     obsfile=f"selected_output_OR_{case_name}_snapped_1p25eu_unique_obs.xyn"
     
@@ -66,11 +66,10 @@ tstart_spinup = datetime.strptime(tstart, "%Y%m%d") - timedelta(days=int(tspinup
 tstart_spinup_str = tstart_spinup.strftime("%Y%m%d")
 tstop_spinup_str = str(int(tstop) + int(tspinup)*24)
 
-if model_config == "RC":
+if model_config == "N3":
     timeinterval=600. # 172800.  777600."
 else:
     timeinterval=3600. #  172800.  777600."
-#timeinterval="3600."
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Get model configuration file .mdu
