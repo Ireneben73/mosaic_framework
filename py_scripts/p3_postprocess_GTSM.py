@@ -21,8 +21,7 @@ model_runs_dir="/projects/0/einf2224/paper1/scripts/model_runs/gtsm"
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def load_case(case, model_config):
-    #if model_config == 'IB':
-    if model_config == "IB" or model_config == "N1" or model_config == "RC":
+    if model_config == "N1" or model_config == "N2" or model_config == "N3":
         gtsm_his = xr.open_dataset(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_fine_local_0000_his.nc').load()
         gtsm_map = dfmt.open_partitioned_dataset(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_fine_local_00*_map.nc')    
         gtsm_his_clipped = gtsm_his
@@ -62,13 +61,12 @@ def load_case(case, model_config):
     #gtsm_map_msk = gtsm_map_max.where(gtsm_map_max != gtsm_map_clipped.FlowElem_bl, drop=True) 
     print('Local model masked', flush=True)
     
-    # If model_config is not 'BS', subtract gtsm_map for 'BS'
-    if model_config != 'BS':
+    # If model_config is not 'G1', subtract gtsm_map for 'G1'
+    if model_config != 'G1':
         #gtsm_map_bs = xr.open_dataset(f'{model_runs_dir}/{case}/BS/output/gtsm_map_max.nc')#.load()
         gtsm_map_bs = dfmt.open_partitioned_dataset(f'{model_runs_dir}/{case}/BS/output/gtsm_fine_00*_map.nc')   
         
-        #if model_config == 'IB':
-        if model_config == "IB" or model_config == "N1" or model_config == "RC":
+        if model_config == "N1" or model_config == "N2" or model_config == "N3":
             # clip BS
             print('gtsm_map_msk:', gtsm_map_msk)
             print('gtsm_map_msk X min:', gtsm_map_msk.FlowElem_xcc.min().values)
@@ -133,7 +131,7 @@ def load_case(case, model_config):
         #gtsm_map = gtsm_map_wl_msk.waterlevel
         gtsm_map = gtsm_map_msk
 
-    if model_config == "RC":    
+    if model_config == "N3":    
         return gtsm_his_msk, gtsm_map, gtsm_map_msk
     else:
         return gtsm_his_msk, gtsm_map
@@ -151,15 +149,10 @@ study_areas = {
     'xynthia': {'min_lon': -7, 'max_lon': 1, 'min_lat': 43.0, 'max_lat': 51.5},  # Define actual values
 }
 
-model_configs = ['BS', 'TR', 'OR', 'IB', 'N1', 'RC']
-#model_configs = ['BS_tides_DDspw', 'TR', 'OR']
-
-
-
+model_configs = ['G1', 'G2', 'G3', 'N1', 'N2', 'N3']
 
 # loop over each case study
-#for i, case in enumerate(cases):
-for i, case in enumerate(cases[1:2]):
+for i, case in enumerate(cases):
 
     # Get study area boundaries
     min_lon = study_areas[case]['min_lon']
@@ -168,16 +161,15 @@ for i, case in enumerate(cases[1:2]):
     max_lat = study_areas[case]['max_lat']
     
     # loop over each model configuration
-    #for j, model_config in enumerate(model_configs):
-    for j, model_config in enumerate(model_configs[0:1]):
+    for j, model_config in enumerate(model_configs):
         print('MODEL CONFIG:', model_config)
         
         # Save the datasets
-        if model_config == 'IB' or model_config == "N1":
+        if model_config == 'N1' or model_config == "N2":
             his, gtsm_map = load_case(case, model_config)
             his.to_netcdf(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_his_max.nc')
             gtsm_map.to_netcdf(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_map_max.nc')
-        elif model_config == 'RC':
+        elif model_config == 'N3':
             his, gtsm_map, gtsm_map_msk = load_case(case, model_config)
             his.to_netcdf(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_his_max.nc')
             gtsm_map.to_netcdf(f'{model_runs_dir}/{case}/{model_config}/local/output/gtsm_map_max.nc')
