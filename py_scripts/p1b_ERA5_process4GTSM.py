@@ -9,8 +9,7 @@ from netCDF4 import num2date, Dataset, date2num
 from shutil import copy
 from os.path import split, join
 import numpy as np
-#import xarray as xr
-#from datetime import datetime, timedelta
+
 import datetime as dt
 from p1b_ERA5_maps import EraMaps
 import pandas as pd
@@ -21,7 +20,7 @@ import sys
 # Case study
 case_name=sys.argv[1]
 
-# Directory where the data will be downloaded at
+# Directory where the data has been downloaded at
 root_dir="/projects/0/einf2224/paper1/data/gtsm/meteo_forcing/ERA5"
 
 # Input ERA5 file downloaded from CDS
