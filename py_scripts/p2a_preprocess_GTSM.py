@@ -40,8 +40,8 @@ root_dir="/projects/0/einf2224/paper1/scripts"
 templatedir=f"{root_dir}/gtsm41_template/model_input_template"
 modelfilesdir=f"{root_dir}/gtsm41_template/model_files_common"
 meteodir="/projects/0/einf2224/paper1/data/gtsm/meteo_forcing/ERA5"
-#if model_config=="IB":
-if model_config == "IB" or model_config == "RC":
+
+if model_config == "N2" or model_config == "N3":
     newdir=f"{root_dir}/model_runs/gtsm/{case_name}/{model_config}/global" # directory where each gtsm model will be ran
 else:
     newdir=f"{root_dir}/model_runs/gtsm/{case_name}/{model_config}"
@@ -81,20 +81,17 @@ else:
     print('EXTERNAL FORCING FILE NOT DEFINED!')
 
 # define settings based on model configuration
-#if model_config=="TR":
-if model_config == "TR" or model_config == "RC":
+if model_config == "G2" or model_config == "N3":
     #hisinterval="600." # 172800.  777600."
     hisinterval=600. # 172800.  777600."
 else:
-    #hisinterval="3600."#  172800.  777600."
     hisinterval=3600. #  172800.  777600."
 
-if model_config=="OR":
-    shutil.copy2(f"{root_dir}/model_configs_setups/OR_refinement/observation_locations_snapped_1p25eu/selected_output_OR_" + str(case_name) + "_snapped_1p25eu_unique_obs.xyn",f'{newdir}/selected_output_OR_' + str(case_name) + '_snapped_1p25eu_unique_obs.xyn')
-    obsfile=f"selected_output_OR_{case_name}_snapped_1p25eu_unique_obs.xyn"
+if model_config=="G3":
+    shutil.copy2(f"{root_dir}/model_configs_setups/G3_refinement/observation_locations_snapped_1p25eu/selected_output_G3_" + str(case_name) + "_snapped_1p25eu_unique_obs.xyn",f'{newdir}/selected_output_G3_' + str(case_name) + '_snapped_1p25eu_unique_obs.xyn')
+    obsfile=f"selected_output_G3_{case_name}_snapped_1p25eu_unique_obs.xyn"
     
-#elif model_config=="IB":
-elif model_config == "IB" or model_config == "RC":
+elif model_config == "N2" or model_config == "N3":
     #obsfile=f"{newdir}/{case_name}_obs.xyn"
     obsfile=f"{case_name}_obs.xyn"
     
