@@ -16,8 +16,6 @@ import geopandas as gpd
 model_dir = sys.argv[1]
 case_name = sys.argv[2]
 bbox = sys.argv[3]
-print('bbox:', bbox)
-print('case_name:', case_name)
 
 dir_output = f'{model_dir}/local'
 path_style = 'unix' # windows / unix
@@ -27,7 +25,6 @@ crs = 'EPSG:4326'
 
 # domain and resolution
 bbox_refinement=sys.argv[3].split(',')
-print('bbox_refinement:', bbox_refinement[0])
 lon_min, lon_max, lat_min, lat_max = float(bbox_refinement[0]), float(bbox_refinement[1]), float(bbox_refinement[2]), float(bbox_refinement[3])
 dxy = 0.25 #this is a bit more than the 2.5km grid resolution that GTSM has near the coasts Used for Irma and Haiyan. For Xynthia testing lower as the global model is more refined there..
 
@@ -73,9 +70,6 @@ data_bathy_sel = data_bathy.sel(lon=slice(lon_min - 1, lon_max + 1), lat=slice(l
 #refine grid
 min_edge_size = 450 #in meters, GEBCO 2023 has moreless that resolution
 dfmt.refine_basegrid(mk=mk_object, data_bathy_sel=data_bathy_sel_grid, min_edge_size=min_edge_size)      
-
-# remove land with GSHHS coastlines
-#dfmt.meshkernel_delete_withcoastlines(mk=mk_object, res='h', min_area = 70)                      # TO DO - remove this later on!
 
 # merge circumcentres
 mk_object.mesh2d_delete_small_flow_edges_and_small_triangles(0.1, 10.0)
