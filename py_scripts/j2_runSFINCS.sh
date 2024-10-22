@@ -52,7 +52,7 @@ for case_name in "${cases[$case_nr]}"; do
     
     for model_config in "${model_configs[$model_nr]}"; do
         echo "MODEL CONFIGURATION: $model_config"
-        conda run -n hydromt-sfincs_latest python test_p5_build_SFINCS_model.py "$case_name" "$model_config" "${start_date[$case_name]}" "$tstop" "${bbox_sfincs[$case_name]}" "$sfincs_templatedir" "$sfincs_model_runsdir" "$gtsm_model_runsdir" "$sfincsdata_dir" "$TMPDIR"
+        conda run -n hydromt-sfincs_latest python p5_build_SFINCS_model.py "$case_name" "$model_config" "${start_date[$case_name]}" "$tstop" "${bbox_sfincs[$case_name]}" "$sfincs_templatedir" "$sfincs_model_runsdir" "$gtsm_model_runsdir" "$sfincsdata_dir" "$TMPDIR"
             
         # Go to the temporary scratch folder where SFINCS will be run
         cd "$TMPDIR/$case_name/$model_config"
