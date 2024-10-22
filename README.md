@@ -33,5 +33,10 @@ The code consists of the following files and directories:
    * **j2_run_SFINCS.sh:** bash script to execute SFINCS, run its pre- and postprocess 
      * **p5_build_SFINCS_model.py:** script to build the SFINCS model
      * **p6_postprocess_SFINCS.py:** script to postprocess the SFINCS model
+
+* **gtsm_template:** folder containing the gtsm model 
+   * **model_input_template:** folder containing the gtsm model template files that are modified for each specific case study
+ 
+* **sfincs_template:** folder containing the data_catalog file from SFINCS
  
 
