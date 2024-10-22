@@ -1,0 +1,157 @@
+egm96_offset:
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: null
+    source_url: https://www.agisoft.com/downloads/geoids/
+  path: /gpfs/work2/0/einf2224/global_datasets/EGM96_offset_filled.tif
+egm98_offset:
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: null
+    source_url: https://www.agisoft.com/downloads/geoids/
+  path: /gpfs/work2/0/einf2224/global_datasets/us_nga_egm2008_1.tif
+dtu10mdt:
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: null
+    source_url: https://www.agisoft.com/downloads/geoids/
+  path: /gpfs/work2/0/einf2224/global_datasets/DTU10MDT_1min_float32.tif
+gswo:
+  data_type: RasterDataset
+  driver: raster
+  kwargs:
+    chunks:
+      x: 4000
+      y: 4000
+  meta:
+    category: surface water
+    paper_doi: 10.1038/nature20584
+    paper_ref: Pekel et al. (2016)
+    source_url: https://global-surface-water.appspot.com/download
+    source_version: v1_1_2019
+  nodata: 255
+  path: /gpfs/work2/0/einf2224/global_datasets/gswo/gswo.vrt 
+merit_dem:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.1029/2019WR024873
+    paper_ref: Yamazaki et al. (2019)
+    source_license: CC-BY-NC 4.0 or ODbL 1.0
+    source_url: http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro & http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/index.html
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/merit/{variable}.tif
+fabdem_xynthia:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.5523/bris.25wfy0f9ukoge2gs7a5mqpq2j7
+    paper_ref: Hawker et al. (2022)
+    source_license: https://data.bris.ac.uk/datasets/25wfy0f9ukoge2gs7a5mqpq2j7/license.txt
+    source_url: https://data.bris.ac.uk/data/dataset/25wfy0f9ukoge2gs7a5mqpq2j7
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/fabdem/xynthia/{variable}.tif
+fabdem_irma:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.5523/bris.25wfy0f9ukoge2gs7a5mqpq2j7
+    paper_ref: Hawker et al. (2022)
+    source_license: https://data.bris.ac.uk/datasets/25wfy0f9ukoge2gs7a5mqpq2j7/license.txt
+    source_url: https://data.bris.ac.uk/data/dataset/25wfy0f9ukoge2gs7a5mqpq2j7
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/fabdem/irma/{variable}.tif
+fabdem_haiyan:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.5523/bris.25wfy0f9ukoge2gs7a5mqpq2j7
+    paper_ref: Hawker et al. (2022)
+    source_license: https://data.bris.ac.uk/datasets/25wfy0f9ukoge2gs7a5mqpq2j7/license.txt
+    source_url: https://data.bris.ac.uk/data/dataset/25wfy0f9ukoge2gs7a5mqpq2j7
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/fabdem/haiyan/{variable}.tif
+ign_dem_xynthia:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.5523/bris.25wfy0f9ukoge2gs7a5mqpq2j7
+    paper_ref: Hawker et al. (2022)
+    source_license: https://data.bris.ac.uk/datasets/25wfy0f9ukoge2gs7a5mqpq2j7/license.txt
+    source_url: https://data.bris.ac.uk/data/dataset/25wfy0f9ukoge2gs7a5mqpq2j7
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/paper1/data/sfincs/ign_dem/{variable}.tif  
+gcn250:
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: soil
+    paper_doi: 10.1038/s41597-019-0155-x
+    paper_ref: Jaafar et al. (2019)
+    source_license: CC BY 4.0
+    source_url: https://doi.org/10.6084/m9.figshare.7756202.v1
+    source_version: v1
+  nodata: 255
+  path: /gpfs/work2/0/einf2224/global_datasets/gcn250/{variable}.tif
+gebco:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: topography
+    paper_doi: 10.5285/a29c5465-b138-234d-e053-6c86abc040b9
+    paper_ref: Weatherall et al (2020)
+    source_license: https://www.gebco.net/data_and_products/gridded_bathymetry_data/#a1
+    source_url: https://www.bodc.ac.uk/data/open_download/gebco/gebco_2020/geotiff/
+    source_version: 2020
+    unit: m+MSL
+  path: /gpfs/work2/0/einf2224/global_datasets/gebco/gebco.vrt
+osm_coastlines:
+  crs: 4326
+  data_type: GeoDataFrame
+  driver: vector
+  meta:
+    category: geography
+    source_author: OpenStreetMap
+    source_info: OpenStreetMap coastlines water polygons, last updated 2020-01-09T05:29
+    source_license: ODbL
+    source_url: https://osmdata.openstreetmap.de/data/coastlines.html
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/osm_coastlines.gpkg
+osm_landareas:
+  crs: 4326
+  data_type: GeoDataFrame
+  driver: vector
+  meta:
+    category: geography
+    source_author: OpenStreetMap
+    source_info: OpenStreetMap coastlines water polygons, last updated 2020-01-09T05:29
+    source_license: ODbL
+    source_url: https://osmdata.openstreetmap.de/data/coastlines.html
+    source_version: 1.0
+  path: /gpfs/work2/0/einf2224/global_datasets/osm_land.gpkg
+vito:
+  crs: 4326
+  data_type: RasterDataset
+  driver: raster
+  meta:
+    category: landuse
+    paper_doi: 10.5281/zenodo.3939038
+    paper_ref: Buchhorn et al (2020)
+    source_url: https://land.copernicus.eu/global/products/lc
+    source_version: v2.0.2
+  path: /gpfs/work2/0/einf2224/global_datasets/vito.tif
+  
